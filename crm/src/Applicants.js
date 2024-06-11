@@ -15,7 +15,7 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
 const rows = [
   createData(
     0,
-    "16 Mar, 2019",
+    "16 Mar, 2024",
     "Elvis Presley",
     "Tupelo, MS",
     "VISA ⠀•••• 3719",
@@ -23,7 +23,7 @@ const rows = [
   ),
   createData(
     1,
-    "16 Mar, 2019",
+    "16 Mar, 2024",
     "Paul McCartney",
     "London, UK",
     "VISA ⠀•••• 2574",
@@ -31,7 +31,7 @@ const rows = [
   ),
   createData(
     2,
-    "16 Mar, 2019",
+    "16 Mar, 2024",
     "Tom Scholz",
     "Boston, MA",
     "MC ⠀•••• 1253",
@@ -39,7 +39,7 @@ const rows = [
   ),
   createData(
     3,
-    "16 Mar, 2019",
+    "16 Mar, 2024",
     "Michael Jackson",
     "Gary, IN",
     "AMEX ⠀•••• 2000",
@@ -47,7 +47,7 @@ const rows = [
   ),
   createData(
     4,
-    "15 Mar, 2019",
+    "15 Mar, 2024",
     "Bruce Springsteen",
     "Long Branch, NJ",
     "VISA ⠀•••• 5919",
@@ -62,15 +62,15 @@ function preventDefault(event) {
 export default function Orders() {
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Recent Applicants</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
+            <TableCell>Based In</TableCell>
             <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell align="right">Salary</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -86,7 +86,7 @@ export default function Orders() {
         </TableBody>
       </Table>
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
+        See more applicants
       </Link>
     </React.Fragment>
   );
