@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import { FormControl } from "@mui/material";
 import { useState } from "react";
 import * as React from "react";
+import Dashboard from "./Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +17,12 @@ function App() {
   };
 
   if (isLoggedIn) {
-    return <div>Welcome to the dashboard!</div>;
+    return (
+      <div>
+        <div>Welcome to the dashboard!</div>
+        <Dashboard />
+      </div>
+    );
   }
 
   return (
