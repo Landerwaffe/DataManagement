@@ -2,17 +2,23 @@ import logo from "./logo.svg";
 import "./App.css";
 import ButtonUsage from "./Button";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { FormControl, FormLabel } from "@mui/material";
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  console.log("Handling Form");
-
-  // handle form submission here
-};
+import { FormControl } from "@mui/material";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Handling Form");
+    setIsLoggedIn(true);
+    // handle form submission here
+  };
+
+  if (isLoggedIn) {
+    return <div>Welcome to the dashboard!</div>;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
