@@ -14,5 +14,5 @@ client.query(`Select * from recruiter`, (err, res) => {
   } else {
     console.log(err.message);
   }
-  client.end;
+  client.end();
 });
