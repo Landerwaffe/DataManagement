@@ -19,7 +19,7 @@ function App() {
   if (isLoggedIn) {
     return (
       <div>
-        <div>Welcome to the dashboard!</div>
+        {/* <div>Welcome to the dashboard!</div> */}
         <Dashboard />
       </div>
     );
