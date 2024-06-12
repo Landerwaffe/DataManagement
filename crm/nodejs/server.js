@@ -24,15 +24,21 @@ app.get("/", (req, res) => {
   const queryType = req.query.type;
 
   // console.log("Query Type is: " + queryType);
-  // if (queryType == "Flatlist") {
-  //   client.query(`SELECT * FROM properties`, (err, result) => {
-  //     if (err) {
-  //       res.status(500).send(err.message);
-  //     } else {
-  //       console.log("Sending Flatlist Rows");
-  //       res.json(result.rows);
+  // if (queryType == "Login") {
+  //   client.query(
+  //     `SELECT * FROM public.users WHERE username =` +
+  //       "'" +
+  //       req.body.email +
+  //       "'",
+  //     (err, result) => {
+  //       if (err) {
+  //         res.status(500).send(err.message);
+  //       } else {
+  //         console.log("Sending User Type");
+  //         res.json(result.rows);
+  //       }
   //     }
-  //   });
+  //   );
   // } else if (queryType == "Details") {
   //   client.query(`SELECT * FROM public.details`, (err, result) => {
   //     if (err) {
@@ -41,7 +47,6 @@ app.get("/", (req, res) => {
   //       res.json(result.rows);
   //     }
   //   });
-  // }
 });
 
 app.post("/", jsonParser, (req, res) => {
@@ -90,7 +95,8 @@ app.post("/", jsonParser, (req, res) => {
           ) {
             console.log("Password Correct!");
 
-            res.send("loggedIn");
+            //res.send("loggedIn");
+            res.json(result.rows);
           } else {
             console.log("Password Wrong!");
           }

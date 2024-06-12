@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import "./App.css";
 import ButtonUsage from "./Button";
 import TextField from "@mui/material/TextField";
@@ -7,7 +8,8 @@ import * as React from "react";
 import Dashboard from "./Dashboard";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isRecruiterLogin, setIsRecruiterLogin] = useState(false);
+  const [isApplicantLogin, setIsApplicantLogin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,8 +33,13 @@ function App() {
 
     if (response.ok) {
       const data = await response.text();
-      console.log(data);
-      setIsLoggedIn(true);
+      const parsedData = JSON.parse(data);
+      console.log("Data is: " + parsedData[0].type);
+      if (parsedData[0].type == "Recruiter") {
+        setIsRecruiterLogin(true);
+      } else if (parsedData[0].type == "Applicant") {
+        setIsApplicantLogin(true);
+      }
     } else {
       console.log("Login failed");
     }
@@ -47,11 +54,20 @@ function App() {
     setPassword(event.target.value);
   };
 
-  if (isLoggedIn) {
+  if (isRecruiterLogin) {
     return (
       <div>
         {/* <div>Welcome to the dashboard!</div> */}
         <Dashboard />
+      </div>
+    );
+  }
+
+  if (isApplicantLogin) {
+    return (
+      <div>
+        {/* <div>Welcome to the dashboard!</div> */}
+        <h1>APPLICANT LOGIN</h1>
       </div>
     );
   }
