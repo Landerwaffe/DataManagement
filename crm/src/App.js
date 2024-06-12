@@ -19,6 +19,8 @@ function App() {
     console.log(email);
     console.log(password);
 
+    url.searchParams.set("type", "Login");
+
     const response = await fetch(url, {
       method: "POST",
       headers: {

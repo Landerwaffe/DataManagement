@@ -72,7 +72,7 @@ app.post("/", jsonParser, (req, res) => {
         req.body.email +
         "'",
       (err, result) => {
-        if (req.body.email && req.body.password != null) {
+        if (req.body.email && req.body.password != null && result.rows[0]) {
           console.log("Went to Login Backend");
           console.log("Result is: " + JSON.stringify(result.rows[0].password));
 
@@ -84,7 +84,8 @@ app.post("/", jsonParser, (req, res) => {
           );
           if (
             JSON.stringify(req.body.password) ==
-            JSON.stringify(result.rows[0].password)
+              JSON.stringify(result.rows[0].password) &&
+            result.rows[0]
           ) {
             console.log("Password Correct!");
 
@@ -92,6 +93,8 @@ app.post("/", jsonParser, (req, res) => {
           } else {
             console.log("Password Wrong!");
           }
+        } else {
+          console.log("No such user exists!");
         }
       }
     );
