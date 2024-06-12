@@ -8,14 +8,16 @@ import Dashboard from "./Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const url = new URL("http://192.168.1.15:8080");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const email = event.target.elements.email.value;
-    const password = event.target.elements.password.value;
+    console.log(email);
+    console.log(password);
 
     const response = await fetch(url, {
       method: "POST",
@@ -35,6 +37,14 @@ function App() {
     // handle form submission here
   };
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
   if (isLoggedIn) {
     return (
       <div>
@@ -51,11 +61,17 @@ function App() {
           <h3 style={{ fontSize: "64px" }}>Login</h3>
           <form onSubmit={handleSubmit}>
             <FormControl>
-              <TextField id="outlined-basic" label="Email" variant="outlined" />
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                onChange={handleEmailChange}
+              />
               <TextField
                 id="outlined-basi"
                 label="Password"
                 variant="outlined"
+                onChange={handlePasswordChange}
               />
               <ButtonUsage buttonText="Log in" type="submit" />
             </FormControl>
