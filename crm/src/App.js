@@ -9,10 +9,29 @@ import Dashboard from "./Dashboard";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleSubmit = (event) => {
+  const url = new URL("http://192.168.1.15:8080");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Handling Form");
-    setIsLoggedIn(true);
+
+    const email = event.target.elements.email.value;
+    const password = event.target.elements.password.value;
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      setIsLoggedIn(true);
+    } else {
+      console.log("Login failed");
+    }
     // handle form submission here
   };
 
