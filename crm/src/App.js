@@ -30,7 +30,7 @@ function App() {
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const data = await response.text();
       console.log(data);
       setIsLoggedIn(true);
     } else {
