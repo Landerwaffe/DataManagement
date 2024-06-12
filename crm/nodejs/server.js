@@ -43,60 +43,60 @@ app.get("/", (req, res) => {
   // }
 });
 
-app.post("/", jsonParser, (req, res) => {
-  const queryType = req.query.type;
+// app.post("/", jsonParser, (req, res) => {
+//   const queryType = req.query.type;
 
-  if (queryType == "Register") {
-    if (req.body.email && req.body.password != null) {
-      console.log("Went to Registration Backend");
-      console.log("Request object is: ");
-      console.log(req.body.email);
-      client.query(
-        `INSERT INTO public.users(
-      username, password)
-      VALUES ( $1 , $2)`,
-        [req.body.email, req.body.password],
-        (err, result) => {
-          if (err) {
-            res.status(500).send(err.message);
-          } else {
-            res.send("DONE");
-          }
-        }
-      );
-    }
-  } else if (queryType == "Login") {
-    client.query(
-      `SELECT * FROM public.users WHERE username =` +
-        "'" +
-        req.body.email +
-        "'",
-      (err, result) => {
-        if (req.body.email && req.body.password != null) {
-          console.log("Went to Login Backend");
-          console.log("Result is: " + JSON.stringify(result.rows[0].password));
+//   if (queryType == "Register") {
+//     if (req.body.email && req.body.password != null) {
+//       console.log("Went to Registration Backend");
+//       console.log("Request object is: ");
+//       console.log(req.body.email);
+//       client.query(
+//         `INSERT INTO public.users(
+//       username, password)
+//       VALUES ( $1 , $2)`,
+//         [req.body.email, req.body.password],
+//         (err, result) => {
+//           if (err) {
+//             res.status(500).send(err.message);
+//           } else {
+//             res.send("DONE");
+//           }
+//         }
+//       );
+//     }
+//   } else if (queryType == "Login") {
+//     client.query(
+//       `SELECT * FROM public.users WHERE username =` +
+//         "'" +
+//         req.body.email +
+//         "'",
+//       (err, result) => {
+//         if (req.body.email && req.body.password != null) {
+//           console.log("Went to Login Backend");
+//           console.log("Result is: " + JSON.stringify(result.rows[0].password));
 
-          console.log(
-            "Username and password are: " +
-              req.body.email +
-              " and " +
-              JSON.stringify(req.body.password)
-          );
-          if (
-            JSON.stringify(req.body.password) ==
-            JSON.stringify(result.rows[0].password)
-          ) {
-            console.log("Password Correct!");
+//           console.log(
+//             "Username and password are: " +
+//               req.body.email +
+//               " and " +
+//               JSON.stringify(req.body.password)
+//           );
+//           if (
+//             JSON.stringify(req.body.password) ==
+//             JSON.stringify(result.rows[0].password)
+//           ) {
+//             console.log("Password Correct!");
 
-            res.send("loggedIn");
-          } else {
-            console.log("Password Wrong!");
-          }
-        }
-      }
-    );
-  }
-});
+//             res.send("loggedIn");
+//           } else {
+//             console.log("Password Wrong!");
+//           }
+//         }
+//       }
+//     );
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
