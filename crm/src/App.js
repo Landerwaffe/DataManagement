@@ -6,6 +6,7 @@ import { FormControl } from "@mui/material";
 import { useState } from "react";
 import * as React from "react";
 import Dashboard from "./Dashboard";
+import { Grid } from "@mui/material";
 
 function App() {
   const [isRecruiterLogin, setIsRecruiterLogin] = useState(false);
@@ -68,6 +69,109 @@ function App() {
       <div>
         {/* <div>Welcome to the dashboard!</div> */}
         <h1>APPLICANT LOGIN</h1>
+        <form noValidate autoComplete="off">
+          <Grid container direction="column" spacing={2}>
+            <Grid item>
+              <TextField
+                id="firstName"
+                label="First Name"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="lastName"
+                label="Last Name"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="email"
+                label="Email"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="phoneNumber"
+                label="Phone Number"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="address"
+                label="Address"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="objective"
+                label="Objective"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="education"
+                label="Education"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="skills"
+                label="Skills"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="experience"
+                label="Experience"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="certifications"
+                label="Certifications"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="languages"
+                label="Languages"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                id="references"
+                label="References"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <ButtonUsage buttonText="Submit Resume" type="submit" />
+            </Grid>
+          </Grid>
+        </form>
       </div>
     );
   }
